@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>模板</title>
+    <url>/2020/01/01/addTemplate/</url>
+    <content><![CDATA[<h1 id="新增模板"><a href="#新增模板" class="headerlink" title="新增模板"></a>新增模板</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">代码块</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Blog</category>
+        <category>help</category>
+        <category>template</category>
+      </categories>
+      <tags>
+        <tag>template</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog Help</title>
+    <url>/2020/09/03/blog-help/</url>
+    <content><![CDATA[<p><img src="http://cdn.chaohang.top/20200812115036.jpg" alt="test 图"></p>
+<blockquote class="blockquote-center">
+优秀的人，不是不合群，而是他们合群的人里面没有你
+</blockquote>
+<br>
+
+<blockquote><footer><strong>Hexo</strong><cite><a href="https://hexo.io/zh-cn/docs">Help</a></cite></footer></blockquote>
+<br>
+
+<h1 id="帮助文档"><a href="#帮助文档" class="headerlink" title="帮助文档"></a>帮助文档</h1><ul>
+<li>本站基于Hexo<br>
+
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alert(&#39;Hello World!&#39;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody></table>
+<h2 id="note"><a href="#note" class="headerlink" title="note"></a>note</h2><div class="note "><p>Test content </p>
+</div>
+<div class="note danger"><p>Test content </p>
+</div>
+
+<h2 id="支持的-HTML-元素"><a href="#支持的-HTML-元素" class="headerlink" title="支持的 HTML 元素"></a>支持的 HTML 元素</h2><p>目前支持的 HTML 元素有：&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;等 ，如:<br>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><div class="note "><p>本地启动服务   hexo server </p>
+</div>
+<div class="note "><p>清理缓存文件   hexo c </p>
+</div>
+<div class="note "><p>github提交   hexo d </p>
+</div>]]></content>
+      <categories>
+        <category>Blog</category>
+        <category>help</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类转Map</title>
+    <url>/2020/12/11/java-tools-classForMap/</url>
+    <content><![CDATA[<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static &lt;T&gt; Map&lt;String,Object&gt; getFiledInfo(T T) &#123;</span><br><span class="line">        Map&lt;String,Object&gt; parameters &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        Field[] fields &#x3D; T.getClass().getDeclaredFields();</span><br><span class="line">        for (Field field : fields) &#123;</span><br><span class="line">            parameters.put(field.getName(), getFieldValueByName(field.getName(), T));</span><br><span class="line">        &#125;</span><br><span class="line">        return parameters;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Object getFieldValueByName(String fieldName,Object o) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            String firstLetter &#x3D; fieldName.substring(0, 1).toUpperCase();</span><br><span class="line">            String getter &#x3D; &quot;get&quot; + firstLetter + fieldName.substring(1);</span><br><span class="line">            Method method &#x3D; o.getClass().getMethod(getter, new Class[] &#123;&#125;);</span><br><span class="line">            Object value &#x3D; method.invoke(o, new Object[] &#123;&#125;);</span><br><span class="line">            return value;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<!--more-->]]></content>
+      <categories>
+        <category>java</category>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口响应文件流,页面下载</title>
+    <url>/2020/12/08/java-io-response/</url>
+    <content><![CDATA[<div class="note "><p>js需要跳转新页面</p>
+</div>
+<a id="more"></a>
+<p>#js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;url是接口地址</span><br><span class="line">window.open(url)</span><br></pre></td></tr></table></figure>
+
+<h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><h2 id="案例1-OutputStream"><a href="#案例1-OutputStream" class="headerlink" title="案例1 OutputStream"></a>案例1 OutputStream</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HSSFWorkbook wb &#x3D; SimpleExcelUtil.exportExcel(list,&quot;roleUser&quot;);</span><br><span class="line">responseDown(response, wb, &quot;角色用户导出数据.xls&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * 响应到客户端</span><br><span class="line"> * @param response</span><br><span class="line"> * @param wb</span><br><span class="line"> * @param fileName</span><br><span class="line"> *&#x2F;</span><br><span class="line">public static void responseDown(HttpServletResponse response, HSSFWorkbook wb, String fileName) &#123;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        fileName &#x3D; new String(fileName.getBytes(), &quot;ISO8859-1&quot;);</span><br><span class="line">        response.setContentType(&quot;application&#x2F;octet-stream;charset&#x3D;ISO8859-1&quot;);</span><br><span class="line">        response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename&#x3D;&quot; + fileName);</span><br><span class="line">        response.addHeader(&quot;Pargam&quot;, &quot;no-cache&quot;);</span><br><span class="line">        response.addHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;);</span><br><span class="line"></span><br><span class="line">        OutputStream os &#x3D; response.getOutputStream();</span><br><span class="line">        wb.write(os);</span><br><span class="line">        os.flush();</span><br><span class="line">        os.close();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例2-PrintWriter文本"><a href="#案例2-PrintWriter文本" class="headerlink" title="案例2 PrintWriter文本"></a>案例2 PrintWriter文本</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;响应到客户端</span><br><span class="line">try &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        String fileName &#x3D; &quot;导出数据.json&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            fileName &#x3D; new String(fileName.getBytes(), &quot;ISO8859-1&quot;);</span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        response.setContentType(&quot;application&#x2F;octet-stream;charset&#x3D;UTF-8&quot;);</span><br><span class="line">        response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename&#x3D;&quot; + fileName);</span><br><span class="line">        response.addHeader(&quot;Pargam&quot;, &quot;no-cache&quot;);</span><br><span class="line">        response.addHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;);</span><br><span class="line">    &#125; catch (Exception ex) &#123;</span><br><span class="line">        ex.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    PrintWriter w &#x3D; response.getWriter();</span><br><span class="line">    w.write(sb.toString());</span><br><span class="line">    w.flush();</span><br><span class="line">    w.close();</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<!--more-->]]></content>
+      <categories>
+        <category>java</category>
+        <category>io</category>
+        <category>response</category>
+      </categories>
+      <tags>
+        <tag>io</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dmp备份还原</title>
+    <url>/2020/09/08/database-oracle-reduction/</url>
+    <content><![CDATA[<h1 id="1-创建表空间"><a href="#1-创建表空间" class="headerlink" title="1.创建表空间"></a>1.创建表空间</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create tablespace ? datafile &#39;C:\A\Program\oracle\oradata\orcl&#x2F;xxx.dbf&#39; size 1024M autoextend on next 512m maxsize unlimited;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-创建用户"><a href="#2-创建用户" class="headerlink" title="2.创建用户"></a>2.创建用户</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--oracle 12c用户名C##开头--&gt;</span><br><span class="line">create user c##? identified by 1234 default tablespace ?;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="2-给予用户权限"><a href="#2-给予用户权限" class="headerlink" title="2.给予用户权限"></a>2.给予用户权限</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grant resource,connect,dba to c##?; </span><br></pre></td></tr></table></figure>
+
+<h1 id="还原"><a href="#还原" class="headerlink" title="还原"></a>还原</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">imp c##?&#x2F;1234@orcl full&#x3D;y file&#x3D;c:&#x2F;xxx.dmp ignore&#x3D;y log&#x3D;c:&#x2F;log.txt;</span><br></pre></td></tr></table></figure>
+<style>
+  input,select{
+    width:100%;
+    height:50px;
+    border-radius: 5px;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  }
+</style>
+<input type="text" />
+
+<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp c##&#x2F;1234@orcl file&#x3D;c:&#x2F;xxx.dmp full&#x3D;y</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>database</category>
+        <category>oracle</category>
+        <category>reduction</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>http传输中文乱码</title>
+    <url>/2020/12/08/java-http-character/</url>
+    <content><![CDATA[<div class="note "><p>HttpPostUtil </p>
+</div>
+
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.pde.ams.p9.util;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.DataOutputStream;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.net.HttpURLConnection;</span><br><span class="line">import java.net.URL;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class HttpPostUtil &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 向指定 URL 发送POST方法的请求</span><br><span class="line">     *</span><br><span class="line">     * @param url   发送请求的 URL</span><br><span class="line">     * @param param 请求参数，请求参数应该是 name1&#x3D;value1&amp;name2&#x3D;value2 的形式。</span><br><span class="line">     * @return 所代表远程资源的响应结果</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static String sendPost(String url, String param) &#123;</span><br><span class="line">        DataOutputStream out;</span><br><span class="line">        BufferedReader in &#x3D; null;</span><br><span class="line">        String result &#x3D; &quot;&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            URL realUrl &#x3D; new URL(url);</span><br><span class="line">            HttpURLConnection connection &#x3D; (HttpURLConnection) realUrl.openConnection();</span><br><span class="line">            &#x2F;**&#x2F;</span><br><span class="line">            connection.setDoInput(true);</span><br><span class="line">            connection.setDoOutput(true);</span><br><span class="line">            connection.setRequestMethod(&quot;POST&quot;);</span><br><span class="line">            connection.setUseCaches(false);</span><br><span class="line"></span><br><span class="line">            connection.setRequestProperty(&quot;Content-type&quot;, &quot;application&#x2F;json;charset&#x3D;UTF-8&quot;);</span><br><span class="line">            connection.setConnectTimeout(30000);</span><br><span class="line">            connection.setReadTimeout(30000);</span><br><span class="line">            connection.connect();</span><br><span class="line"></span><br><span class="line">            out &#x3D; new DataOutputStream(connection.getOutputStream());</span><br><span class="line">            out.write(param.getBytes(&quot;UTF-8&quot;));</span><br><span class="line"></span><br><span class="line">            out.flush();</span><br><span class="line">            &#x2F;&#x2F; 定义BufferedReader输入流来读取URL的响应</span><br><span class="line">            in &#x3D; new BufferedReader(new InputStreamReader(connection.getInputStream()));</span><br><span class="line">            String line;</span><br><span class="line">            while ((line &#x3D; in.readLine()) !&#x3D; null) &#123;</span><br><span class="line">                result +&#x3D; line;</span><br><span class="line">            &#125;</span><br><span class="line">            out.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            System.out.println(&quot;发送 POST 请求出现异常！&quot; + e);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!--more-->]]></content>
+      <categories>
+        <category>java</category>
+        <category>http</category>
+        <category>character</category>
+      </categories>
+      <tags>
+        <tag>template</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>class文件查找生成</title>
+    <url>/2020/12/28/java-tools-findClass/</url>
+    <content><![CDATA[<h1 id="解决因一个个找class文件的无聊繁琐"><a href="#解决因一个个找class文件的无聊繁琐" class="headerlink" title="解决因一个个找class文件的无聊繁琐"></a>解决因一个个找class文件的无聊繁琐</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;         </span><br><span class="line">    String itemFolder &#x3D; &quot;WHJXC&quot;;&#x2F;&#x2F;项目文件夹</span><br><span class="line">    String xmlType &#x3D; &quot;oracle&quot;;&#x2F;&#x2F;xml文件数据库类型</span><br><span class="line">    String str &#x3D;</span><br><span class="line">    &quot;SimpleExcelUtil.java,&quot;+</span><br><span class="line">    &quot;UupmUser_SqlMap.xml,&quot;+</span><br><span class="line">    &quot;UupmUserAction.java,&quot;+</span><br><span class="line">    &quot;UupmUserDAO.java,&quot;+</span><br><span class="line">    &quot;UupmUserDAOImpl.java,&quot;+</span><br><span class="line">    &quot;UupmUserService.java,&quot;+</span><br><span class="line">    &quot;UupmUserServiceImpl.java,&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    str &#x3D; str.replace(&quot;.java&quot;,&quot;.class&quot;);</span><br><span class="line">    String[] res &#x3D; str.split(&quot;,&quot;);</span><br><span class="line">    for (String s : res) &#123;</span><br><span class="line">        generateFile(itemFolder,s,xmlType);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void generateFile(String path ,String keyWord ,String xmlType) &#123;</span><br><span class="line">    List&lt;File&gt; files &#x3D; searchFiles(new File(&quot;C:&#x2F;Users&#x2F;admin&#x2F;Desktop&#x2F;&quot;+path+&quot;&#x2F;build&#x2F;classes&quot;), keyWord);&#x2F;&#x2F;路径、要查找的文件名称关键字</span><br><span class="line">    byte[] bs &#x3D; new byte[1024 * 1024]; &#x2F;&#x2F; 保存读取或写入流数据的字节数组</span><br><span class="line">    int len&#x3D;0;  &#x2F;&#x2F;读到的字节长度</span><br><span class="line"></span><br><span class="line">    for (File file : files) &#123;</span><br><span class="line">        if(files.size()&gt;1)&#123;</span><br><span class="line">            if(!file.getAbsolutePath().contains(xmlType))</span><br><span class="line">                continue;</span><br><span class="line">            System.out.println(file.getAbsolutePath());</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            Calendar cal &#x3D; Calendar.getInstance();</span><br><span class="line">            String generate &#x3D; &quot;C:&#x2F;Users&#x2F;admin&#x2F;Downloads&#x2F;a_postFile&#x2F;&quot;+cal.get(Calendar.MONTH+1)+cal.get(Calendar.DATE)+&quot;&#x2F;&quot;+file.getName();</span><br><span class="line">            File newFile &#x3D; new File(generate);</span><br><span class="line">            if(!newFile.getParentFile().exists())</span><br><span class="line">                newFile.getParentFile().mkdir();</span><br><span class="line"></span><br><span class="line">            FileInputStream ins &#x3D; new FileInputStream(file);</span><br><span class="line">            FileOutputStream os &#x3D; new FileOutputStream(newFile);</span><br><span class="line">            while ((len&#x3D;ins.read(bs) )!&#x3D; -1) &#x2F;&#x2F; 读数据</span><br><span class="line">            &#123;</span><br><span class="line">                os.write(bs,0,len); &#x2F;&#x2F; 写数据</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static List&lt;File&gt; searchFiles(File folder, final String keyword) &#123;</span><br><span class="line">    List&lt;File&gt; result &#x3D; new ArrayList&lt;File&gt;();</span><br><span class="line">    if (folder.isFile())</span><br><span class="line">        result.add(folder);</span><br><span class="line"></span><br><span class="line">    File[] subFolders &#x3D; folder.listFiles(new FileFilter() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public boolean accept(File file) &#123;</span><br><span class="line">            if (file.isDirectory()) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            if (file.getName().contains(keyword)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    if (subFolders !&#x3D; null) &#123;</span><br><span class="line">        for (File file : subFolders) &#123;</span><br><span class="line">            if (file.isFile()) &#123;</span><br><span class="line">                &#x2F;&#x2F; 如果是文件则将文件添加到结果列表中</span><br><span class="line">                result.add(file);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                &#x2F;&#x2F; 如果是文件夹，则递归调用本方法，然后把所有的文件加到结果列表中</span><br><span class="line">                result.addAll(searchFiles(file, keyword));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xml操作</title>
+    <url>/2020/12/10/java-tools-xml/</url>
+    <content><![CDATA[<div class="note "><p>xml生成模板 </p>
+</div>
+
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line"></span><br><span class="line">import org.dom4j.Document;</span><br><span class="line">import org.dom4j.DocumentHelper;</span><br><span class="line">import org.dom4j.Element;</span><br><span class="line">import org.dom4j.io.OutputFormat;</span><br><span class="line">import org.dom4j.io.XMLWriter;</span><br><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">public class Dom4jXml &#123;</span><br><span class="line"></span><br><span class="line">	@Test</span><br><span class="line">	public void test()&#123;</span><br><span class="line">		Long start &#x3D; System.currentTimeMillis();</span><br><span class="line">		createXml();</span><br><span class="line">		System.out.println(&quot;运行时间：&quot;+ (System.currentTimeMillis() - start));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * 生成xml方法</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static void createXml()&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			&#x2F;&#x2F; 1、创建document对象</span><br><span class="line">			Document document &#x3D; DocumentHelper.createDocument();</span><br><span class="line">			&#x2F;&#x2F; 2、创建根节点rss</span><br><span class="line">			Element rss &#x3D; document.addElement(&quot;rss&quot;);</span><br><span class="line">			&#x2F;&#x2F; 3、向rss节点添加version属性</span><br><span class="line">			rss.addAttribute(&quot;version&quot;, &quot;2.0&quot;);</span><br><span class="line">			&#x2F;&#x2F; 4、生成子节点及子节点内容</span><br><span class="line">			Element channel &#x3D; rss.addElement(&quot;channel&quot;);</span><br><span class="line">			Element title &#x3D; channel.addElement(&quot;title&quot;);</span><br><span class="line">			title.setText(&quot;国内最新新闻&quot;);</span><br><span class="line">			&#x2F;&#x2F; 5、设置生成xml的格式</span><br><span class="line">			OutputFormat format &#x3D; OutputFormat.createPrettyPrint();</span><br><span class="line">			&#x2F;&#x2F; 设置编码格式</span><br><span class="line">			format.setEncoding(&quot;UTF-8&quot;);</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			&#x2F;&#x2F; 6、生成xml文件			</span><br><span class="line">			File file &#x3D; new File(&quot;rss.xml&quot;);</span><br><span class="line">			XMLWriter writer &#x3D; new XMLWriter(new FileOutputStream(file), format);</span><br><span class="line">			&#x2F;&#x2F; 设置是否转义，默认使用转义字符</span><br><span class="line">			writer.setEscapeText(false);</span><br><span class="line">			writer.write(document);</span><br><span class="line">			writer.close();</span><br><span class="line">			System.out.println(&quot;生成rss.xml成功&quot;);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			System.out.println(&quot;生成rss.xml失败&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>tool</category>
+        <category>xml</category>
+      </categories>
+      <tags>
+        <tag>xml</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel导入导出工具类</title>
+    <url>/2020/12/07/java-tools-poi-excel/</url>
+    <content><![CDATA[<div class="note "><p>ExcelUtil </p>
+</div>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.pde.ams.p9.util;</span><br><span class="line"></span><br><span class="line">import com.pde.pdp.uupm.domain.UupmUserBean;</span><br><span class="line">import com.pde.pdp.uupm.domain.UupmUserRoleBean;</span><br><span class="line">import org.apache.poi.hssf.usermodel.*;</span><br><span class="line">import org.apache.poi.ss.usermodel.Cell;</span><br><span class="line">import org.apache.poi.ss.usermodel.Row;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public final class test &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * excel导出格式封装</span><br><span class="line">     * @param list</span><br><span class="line">     * @param type</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; HSSFWorkbook exportExcel(List&lt;T&gt; list ,String type) &#123;</span><br><span class="line">        HSSFWorkbook wb &#x3D; new HSSFWorkbook();</span><br><span class="line">        &#x2F;&#x2F;创建sheet页,名称</span><br><span class="line">        HSSFSheet sheet &#x3D; wb.createSheet(type);</span><br><span class="line">&#x2F;&#x2F;      sheet.setColumnWidth(1,3*1000); &#x2F;&#x2F;设置列宽</span><br><span class="line">        HSSFRow row;&#x2F;&#x2F;行</span><br><span class="line">        HSSFCell cell;&#x2F;&#x2F;单元格</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt;&#x3D; list.size(); i++) &#123;</span><br><span class="line">            row &#x3D; sheet.createRow(i);&#x2F;&#x2F;创建表格行</span><br><span class="line">            for (int j &#x3D; 0; j &lt;&#x3D; 6; j++) &#123;</span><br><span class="line">                initCell(list, type,row.createCell(j), i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return wb;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 列初始化</span><br><span class="line">     * @param cell</span><br><span class="line">     * @param list</span><br><span class="line">     * @param j</span><br><span class="line">     *&#x2F;</span><br><span class="line">    static &lt;T&gt; void initCell(List&lt;T&gt; list, String type, HSSFCell cell, int i, int j) &#123;</span><br><span class="line">        &#x2F;&#x2F;标题列</span><br><span class="line">        if (i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            if (type.equals(&quot;user&quot;))</span><br><span class="line">                switch (j) &#123;</span><br><span class="line">                    case 0:</span><br><span class="line">                        cell.setCellValue(&quot;ID&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 1:</span><br><span class="line">                        cell.setCellValue(&quot;姓名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            else if (type.equals(&quot;roleUser&quot;))</span><br><span class="line">                switch (j) &#123;</span><br><span class="line">                    case 0:</span><br><span class="line">                        cell.setCellValue(&quot;ID&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 1:</span><br><span class="line">                        cell.setCellValue(&quot;姓名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 2:</span><br><span class="line">                        cell.setCellValue(&quot;登录名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        if (type.equals(&quot;user&quot;)) &#123;</span><br><span class="line">            UupmUserBean bean &#x3D; (UupmUserBean) list.get(i - 1);</span><br><span class="line"></span><br><span class="line">            switch (j) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    cell.setCellValue(bean.get_id());</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    cell.setCellValue(bean.getUser_name());</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (type.equals(&quot;roleUser&quot;)) &#123;</span><br><span class="line">            UupmUserBean bean &#x3D; (UupmUserBean) list.get(i - 1);</span><br><span class="line">            switch (j) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    cell.setCellValue(bean.get_id());</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    cell.setCellValue(bean.getUser_name());</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    cell.setCellValue(bean.getLogon_name());</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * excel导入格式封装</span><br><span class="line">     * @param in</span><br><span class="line">     * @param type</span><br><span class="line">     * @param &lt;T&gt;</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; List&lt;T&gt; importExcel(InputStream in, String type) &#123;</span><br><span class="line">        List&lt;T&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">            HSSFWorkbook workbook &#x3D; new HSSFWorkbook(in);</span><br><span class="line">            &#x2F;&#x2F;sheet页码</span><br><span class="line">            HSSFSheet hssfSheet &#x3D; workbook.getSheetAt(0);</span><br><span class="line">            </span><br><span class="line">            String v;</span><br><span class="line">            Map&lt;String,Long&gt; role &#x3D;new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            for (Row row : hssfSheet) &#123;</span><br><span class="line">                if (type.equals(&quot;user&quot;))&#123;</span><br><span class="line">                    UupmUserBean userBean &#x3D; new UupmUserBean();</span><br><span class="line">                    for (int i &#x3D; 0; i &lt;&#x3D; 6; i++) &#123;</span><br><span class="line">                        v &#x3D; getValue(row.getCell(i));</span><br><span class="line">                        switch (i) &#123;</span><br><span class="line">                            case 1:</span><br><span class="line">                                userBean.setUser_name(v);</span><br><span class="line">                                break;</span><br><span class="line">                            case 2:</span><br><span class="line">                                userBean.setLogon_name(v);</span><br><span class="line">                                break;</span><br><span class="line">                            case 3:</span><br><span class="line">                                userBean.setSex(v.equals(&quot;女&quot;)?2:1);</span><br><span class="line">                                break;</span><br><span class="line">                            case 6:</span><br><span class="line">                                userBean.setOrg_name(v);</span><br><span class="line">                                list.add((T) userBean);</span><br><span class="line">                                userBean &#x3D; new UupmUserBean();</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else if (type.equals(&quot;roleUser&quot;))&#123;</span><br><span class="line">                    UupmUserRoleBean userRoleBean &#x3D; new UupmUserRoleBean();</span><br><span class="line">                    for (int i &#x3D; 0; i &lt;&#x3D; 5; i++) &#123;</span><br><span class="line">                        v &#x3D; getValue(row.getCell(i));</span><br><span class="line">                        switch (i) &#123;</span><br><span class="line">                            case 0:</span><br><span class="line">                                userRoleBean.setUser_id(Long.parseLong(v));</span><br><span class="line">                                break;</span><br><span class="line">                            case 4:</span><br><span class="line">                                list.add((T) userRoleBean);</span><br><span class="line">                                userRoleBean &#x3D; new UupmUserRoleBean();</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 对表格中数值进行格式化</span><br><span class="line">     * @param cell</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    &#x2F;&#x2F;解决excel类型问题，获得数值</span><br><span class="line">    public static String getValue(Cell cell) &#123;</span><br><span class="line">        String value &#x3D; &quot;&quot;;</span><br><span class="line">        if (null &#x3D;&#x3D; cell) &#123;</span><br><span class="line">            return value;</span><br><span class="line">        &#125;</span><br><span class="line">        switch (cell.getCellType()) &#123;</span><br><span class="line">            &#x2F;&#x2F;数值型</span><br><span class="line">            case Cell.CELL_TYPE_NUMERIC:</span><br><span class="line">                if (HSSFDateUtil.isCellDateFormatted(cell)) &#123;</span><br><span class="line">                    &#x2F;&#x2F;如果是date类型则 ，获取该cell的date值</span><br><span class="line">                    Date date &#x3D; HSSFDateUtil.getJavaDate(cell.getNumericCellValue());</span><br><span class="line">                    SimpleDateFormat format &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">                    value &#x3D; format.format(date);</span><br><span class="line">                    ;</span><br><span class="line">                &#125; else &#123;&#x2F;&#x2F; 纯数字</span><br><span class="line">                    BigDecimal big &#x3D; new BigDecimal(cell.getNumericCellValue());</span><br><span class="line">                    value &#x3D; big.toString();</span><br><span class="line">                    &#x2F;&#x2F;解决1234.0  去掉后面的.0</span><br><span class="line">                    if (null !&#x3D; value &amp;&amp; !&quot;&quot;.equals(value.trim())) &#123;</span><br><span class="line">                        String[] item &#x3D; value.split(&quot;[.]&quot;);</span><br><span class="line">                        if (1 &lt; item.length &amp;&amp; &quot;0&quot;.equals(item[1])) &#123;</span><br><span class="line">                            value &#x3D; item[0];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F;字符串类型</span><br><span class="line">            case Cell.CELL_TYPE_STRING:</span><br><span class="line">                value &#x3D; cell.getStringCellValue().toString();</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F; 公式类型</span><br><span class="line">            case Cell.CELL_TYPE_FORMULA:</span><br><span class="line">                &#x2F;&#x2F;读公式计算值</span><br><span class="line">                value &#x3D; String.valueOf(cell.getNumericCellValue());</span><br><span class="line">                if (value.equals(&quot;NaN&quot;)) &#123;&#x2F;&#x2F; 如果获取的数据值为非法值,则转换为获取字符串</span><br><span class="line">                    value &#x3D; cell.getStringCellValue().toString();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F; 布尔类型</span><br><span class="line">            case Cell.CELL_TYPE_BOOLEAN:</span><br><span class="line">                value &#x3D; &quot; &quot; + cell.getBooleanCellValue();</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                value &#x3D; cell.getStringCellValue();</span><br><span class="line">        &#125;</span><br><span class="line">        if (&quot;null&quot;.endsWith(value.trim())) &#123;</span><br><span class="line">            value &#x3D; &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>tools</category>
+        <category>poi</category>
+        <category>excel</category>
+      </categories>
+      <tags>
+        <tag>poi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>videoAnalysis</title>
+    <url>/2020/09/08/tools-videoAnalysis/</url>
+    <content><![CDATA[<div class="note "><p>视频解析 </p>
+</div>
+
+<a id="more"></a>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<style>
+  button{
+    border-radius: 4px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  }
+  button:hover{
+    cursor:hand;
+    background-color:rgba(125,125,125,0.2);
+  }
+  input,select{
+    border-radius: 4px;
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  }
+</style>
+
+<select id="api" name="api" >
+  <option value="https://okjx.cc/?url=">1080P</option>
+  <option value="https://www.ikukk.com/?url=">720P</option>
+</select>
+<label for="url">视频地址：</label>
+<input type="url" id="url" name="url">
+<button type="button" id="play" style="border:1px solid #ccc;color:#333;">解 析</button>
+
+<script>
+        $("#play").click(function(){
+      $('#m').remove();
+            $api = $("#api").val();
+            $url = $("#url").val();
+            if($url == "" || $url == null || !/^http.*$/.test($url)){
+        $("#play").after("  <span id='m' style='color:red;'>视频地址不正确！</span>");
+                return;
+            }
+            if($url == "" || $url == null || !/^http.*=$/.test($api)){
+        $("#play").after("<p style='color:red;'>无效API！</p>");
+                return;
+            }
+            window.open($api+$url);
+        });
+</script>
+
+]]></content>
+      <categories>
+        <category>tools</category>
+        <category>video</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>导入</title>
+    <url>/2020/12/07/pde-js-importTemplate/</url>
+    <content><![CDATA[<div class="note "><p>p9 dialog框导入 </p>
+</div>
+
+<a id="more"></a>
+<h1 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;a class&#x3D;&quot;easyui-linkbutton&quot; iconCls&#x3D;&quot;icon-import&quot; plain&#x3D;&quot;true&quot; id&#x3D;&quot;import&quot;&gt;&lt;fmt:message key&#x3D;&quot;common.button.import&quot; &#x2F;&gt;&lt;&#x2F;a&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;import&quot; title&#x3D;&quot;&lt;fmt:message key&#x3D;&quot;common.button.import&quot; &#x2F;&gt;&quot;style&#x3D;&quot;width: 350px; height: 120px; padding: 10px; overflow-x: hidden;&quot;&gt;</span><br><span class="line">    &lt;form id&#x3D;&quot;import&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;</span><br><span class="line">        &lt;input id&#x3D;&quot;file&quot; name&#x3D;&quot;file&quot; type&#x3D;&quot;file&quot; style&#x3D;&quot;height: 25px; line-height: 25px;&quot; &#x2F;&gt;</span><br><span class="line">        &lt;span id&#x3D;&quot;prompt&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var _url_loading_img &#x3D; _path + &quot;img&#x2F;p9&#x2F;home&#x2F;P9P&#x2F;loading.gif&quot;;</span><br><span class="line">   </span><br><span class="line">$(_Import).dialog(&#123;</span><br><span class="line">	collapsible : true,</span><br><span class="line">	closed : true,</span><br><span class="line">	modal : true,</span><br><span class="line">	buttons: [&#123;</span><br><span class="line">		text : &quot;保存&quot;,</span><br><span class="line">		iconCls : &#39;icon-save&#39;,</span><br><span class="line">		handler : function() &#123;</span><br><span class="line">			importFile();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;, &#123;</span><br><span class="line">		text : &quot;取消&quot;,</span><br><span class="line">		handler : function() &#123;</span><br><span class="line">			$(_import).dialog(&#39;close&#39;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 提交文件获取表名和列名</span><br><span class="line">   function importFile()&#123;</span><br><span class="line">       var filePath &#x3D; $(&#39;#file&#39;).val();</span><br><span class="line">       if(filePath !&#x3D; &quot;&quot;)&#123;</span><br><span class="line">           var filename&#x3D;filePath.replace(&#x2F;.*(\&#x2F;|\\)&#x2F;, &quot;&quot;);</span><br><span class="line">           var fileExt&#x3D;(&#x2F;[.]&#x2F;.exec(filename)) ? &#x2F;[^.]+$&#x2F;.exec(filename.toLowerCase()) : &#39;&#39;;</span><br><span class="line">           if(fileExt !&#x3D; &#39;xlsx&#39; &amp;&amp; fileExt !&#x3D; &#39;xls&#39;)&#123;</span><br><span class="line">               $.messager.show(&#123;</span><br><span class="line">                   title:&quot;提示&quot;,</span><br><span class="line">                   msg: &quot;允许格式（*.xls,*.xlsx）&quot;,</span><br><span class="line">                   showType:&#39;show&#39;</span><br><span class="line">               &#125;);</span><br><span class="line">   		&#125;else&#123;</span><br><span class="line">               initImportFile();</span><br><span class="line">   		&#125;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           $.messager.show(&#123;</span><br><span class="line">               title:&#39;提示&#39;,&#x2F;&#x2F;&#39;提示&#39;,</span><br><span class="line">               msg: &#39;请先选择要导入的文件!&#39;,</span><br><span class="line">               showType:&#39;show&#39;</span><br><span class="line">           &#125;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   function initImportFile() &#123;</span><br><span class="line">       &#x2F;&#x2F;文件加载中，请耐心等待....</span><br><span class="line">       if (!$(&#39;#prompt&#39;).html()) &#123;</span><br><span class="line">           $(&#39;#prompt&#39;).append(&#39;&lt;img src&#x3D;\&quot;&#39; + _url_loading_img + &#39;&quot;&#x2F;&gt;&#39; + appMessage.p9CommonArchiveFileLoading);</span><br><span class="line">       &#125;</span><br><span class="line">       $(&#39;#prompt&#39;).css(&#39;display&#39;, &#39;&#39;);</span><br><span class="line">       $(&#39;#import_ff&#39;).form(&#39;submit&#39;, &#123;</span><br><span class="line">           url: _url_importFile,</span><br><span class="line">           onSubmit: function () &#123;</span><br><span class="line">           &#125;,</span><br><span class="line">           success: function (data) &#123;</span><br><span class="line">               data &#x3D; JSON.parse(data);</span><br><span class="line">               $(&#39;#prompt&#39;).css(&#39;display&#39;, &#39;none&#39;);</span><br><span class="line">               $(_tt).datagrid(&#39;clearSelections&#39;);</span><br><span class="line">               $(_tt).datagrid(&#39;reload&#39;);</span><br><span class="line">               $(_ipImport).dialog(&#39;close&#39;);</span><br><span class="line">               $.messager.show(&#123;</span><br><span class="line">                   title:appMessage.commonMsgPrompt,&#x2F;&#x2F;&#39;提示&#39;,</span><br><span class="line">                   msg: data.message,&#x2F;&#x2F;&#39;请先选择要导入的文件!&#39;,</span><br><span class="line">                   showType:&#39;show&#39;</span><br><span class="line">               &#125;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>pde</category>
+        <category>js</category>
+        <category>importTemplate</category>
+      </categories>
+      <tags>
+        <tag>pde</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>window.print记录</title>
+    <url>/2020/12/30/website-js-print/</url>
+    <content><![CDATA[<h1 id="js打印"><a href="#js打印" class="headerlink" title="js打印"></a>js打印</h1><a id="more"></a>
+
+<blockquote><footer><strong>基于</strong><cite><a href="https://juejin.cn/post/6844904009271083021">juejin.cn/post/6844904009271083021</a></cite></footer></blockquote>
+
+<h2 id="打印指定区域部分内容后页面功能失效"><a href="#打印指定区域部分内容后页面功能失效" class="headerlink" title="打印指定区域部分内容后页面功能失效"></a>打印指定区域部分内容后页面功能失效</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认当前window</span><br><span class="line">&#x2F;&#x2F;重新刷新页面，绑定页面功能</span><br><span class="line">location.reload();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;iframe嵌入</span><br><span class="line">&#x2F;&#x2F;父页面传参，子页面动态增加节点，打印</span><br><span class="line">&lt;iframe id&#x3D;&quot;iframe&quot; src&#x3D;&quot;...&quot;  width&#x3D;&quot;100%&quot; frameborder&#x3D;&quot;0&quot; scrolling&#x3D;&quot;no&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line"></span><br><span class="line">document.getElementById(&quot;iframe&quot;).contentWindow.function(...);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web</category>
+        <category>js</category>
+        <category>print</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>character</title>
+    <url>/2020/09/08/website-background-dynamic-gril/</url>
+    <content><![CDATA[<div class="note "><p>动态人物背景(wait a moment) </p>
+</div>
+
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--js--&gt;</span><br><span class="line">&lt;!--小帅哥： https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-chitose@1.0.5&#x2F;assets&#x2F;chitose.model.json--&gt;</span><br><span class="line">&lt;!--萌娘：https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-shizuku@1.0.5&#x2F;assets&#x2F;shizuku.model.json--&gt;</span><br><span class="line">&lt;!--小可爱（女）：https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-koharu@1.0.5&#x2F;assets&#x2F;koharu.model.json--&gt;</span><br><span class="line">&lt;!--小可爱（男）：https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-haruto@1.0.5&#x2F;assets&#x2F;haruto.model.json--&gt;</span><br><span class="line">&lt;!--初音：https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-miku@1.0.5&#x2F;assets&#x2F;miku.model.json--&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery&#x2F;1.12.4&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;bootstrap&#x2F;3.3.7&#x2F;js&#x2F;bootstrap.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcss.com&#x2F;jquery-cookie&#x2F;1.4.1&#x2F;jquery.cookie.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;eqcn.ajz.miesnfu.com&#x2F;wp-content&#x2F;plugins&#x2F;wp-3d-pony&#x2F;live2dw&#x2F;lib&#x2F;L2Dwidget.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    L2Dwidget.init(&#123; &quot;model&quot;: &#123; jsonPath:</span><br><span class="line">        &quot;https:&#x2F;&#x2F;unpkg.com&#x2F;live2d-widget-model-chitose@1.0.5&#x2F;assets&#x2F;chitose.model.json&quot;,</span><br><span class="line">        &quot;scale&quot;: 1 &#125;, &quot;display&quot;: &#123; &quot;position&quot;: &quot;right&quot;, &quot;width&quot;: 100, &quot;height&quot;: 200,</span><br><span class="line">        &quot;hOffset&quot;: 0, &quot;vOffset&quot;: -20 &#125;, &quot;mobile&quot;: &#123; &quot;show&quot;: true, &quot;scale&quot;: 0.5 &#125;,</span><br><span class="line">        &quot;react&quot;: &#123; &quot;opacityDefault&quot;: 0.8, &quot;opacityOnHover&quot;: 0.1 &#125; &#125;); </span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+L2Dwidget.init({ "model": { jsonPath:
+    "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",
+    "scale": 1 }, "display": { "position": "right", "width": 100, "height": 200,
+    "hOffset": 0, "vOffset": -20 }, "mobile": { "show": true, "scale": 0.5 },
+    "react": { "opacityDefault": 0.8, "opacityOnHover": 0.1 } }); 
+</script>]]></content>
+      <categories>
+        <category>web</category>
+        <category>website</category>
+        <category>website background</category>
+        <category>dynamic</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>line</title>
+    <url>/2020/09/08/website-background-dynamic-line/</url>
+    <content><![CDATA[<div class="note "><p>动态线条背景 </p>
+</div>
+
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--js--&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">!function() &#123;</span><br><span class="line">    function o(w, v, i) &#123;</span><br><span class="line">        return w.getAttribute(v) || i</span><br><span class="line">    &#125;</span><br><span class="line">    function j(i) &#123;</span><br><span class="line">        return document.getElementsByTagName(i)</span><br><span class="line">    &#125;</span><br><span class="line">    function l() &#123;</span><br><span class="line">        var i &#x3D; j(&quot;script&quot;),</span><br><span class="line">            w &#x3D; i.length,</span><br><span class="line">            v &#x3D; i[w - 1];</span><br><span class="line">        return &#123;</span><br><span class="line">            l: w,</span><br><span class="line">            z: o(v, &quot;zIndex&quot;, -1),</span><br><span class="line">            o: o(v, &quot;opacity&quot;, 0.5),</span><br><span class="line">            c: o(v, &quot;color&quot;, &quot;0,0,0&quot;),</span><br><span class="line">            n: o(v, &quot;count&quot;, 99)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function k() &#123;</span><br><span class="line">        r &#x3D; u.width &#x3D; window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n &#x3D; u.height &#x3D; window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</span><br><span class="line">    &#125;</span><br><span class="line">    function b() &#123;</span><br><span class="line">        e.clearRect(0, 0, r, n);</span><br><span class="line">        var w &#x3D; [f].concat(t);</span><br><span class="line">        var x, v, A, B, z, y;</span><br><span class="line">        t.forEach(function(i) &#123;</span><br><span class="line">            i.x +&#x3D; i.xa, i.y +&#x3D; i.ya, i.xa *&#x3D; i.x &gt; r || i.x &lt; 0 ? -1 : 1, i.ya *&#x3D; i.y &gt; n || i.y &lt; 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);</span><br><span class="line">            for (v &#x3D; 0; v &lt; w.length; v++) &#123;</span><br><span class="line">                x &#x3D; w[v];</span><br><span class="line">                if (i !&#x3D;&#x3D; x &amp;&amp; null !&#x3D;&#x3D; x.x &amp;&amp; null !&#x3D;&#x3D; x.y) &#123;</span><br><span class="line">                    B &#x3D; i.x - x.x, z &#x3D; i.y - x.y, y &#x3D; B * B + z * z;</span><br><span class="line">                    y &lt; x.max &amp;&amp; (x &#x3D;&#x3D;&#x3D; f &amp;&amp; y &gt;&#x3D; x.max &#x2F; 2 &amp;&amp; (i.x -&#x3D; 0.03 * B, i.y -&#x3D; 0.03 * z), A &#x3D; (x.max - y) &#x2F; x.max, e.beginPath(), e.lineWidth &#x3D; A &#x2F; 2, e.strokeStyle &#x3D; &quot;rgba(&quot; + s.c + &quot;,&quot; + (A + 0.2) + &quot;)&quot;, e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            w.splice(w.indexOf(i), 1)</span><br><span class="line">        &#125;), m(b)</span><br><span class="line">    &#125;</span><br><span class="line">    var u &#x3D; document.createElement(&quot;canvas&quot;),</span><br><span class="line">        s &#x3D; l(),</span><br><span class="line">        c &#x3D; &quot;c_n&quot; + s.l,</span><br><span class="line">        e &#x3D; u.getContext(&quot;2d&quot;),</span><br><span class="line">        r, n, m &#x3D; window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||</span><br><span class="line">    function(i) &#123;</span><br><span class="line">        window.setTimeout(i, 1000 &#x2F; 45)</span><br><span class="line">    &#125;, a &#x3D; Math.random, f &#x3D; &#123;</span><br><span class="line">        x: null,</span><br><span class="line">        y: null,</span><br><span class="line">        max: 20000</span><br><span class="line">    &#125;;</span><br><span class="line">    u.id &#x3D; c;</span><br><span class="line">    u.style.cssText &#x3D; &quot;position:fixed;top:0;left:0;z-index:&quot; + s.z + &quot;;opacity:&quot; + s.o;</span><br><span class="line">    j(&quot;body&quot;)[0].appendChild(u);</span><br><span class="line">    k(), window.onresize &#x3D; k;</span><br><span class="line">    window.onmousemove &#x3D; function(i) &#123;</span><br><span class="line">        i &#x3D; i || window.event, f.x &#x3D; i.clientX, f.y &#x3D; i.clientY</span><br><span class="line">    &#125;, window.onmouseout &#x3D; function() &#123;</span><br><span class="line">        f.x &#x3D; null, f.y &#x3D; null</span><br><span class="line">    &#125;;</span><br><span class="line">    for (var t &#x3D; [], p &#x3D; 0; s.n &gt; p; p++) &#123;</span><br><span class="line">        var h &#x3D; a() * r,</span><br><span class="line">            g &#x3D; a() * n,</span><br><span class="line">            q &#x3D; 2 * a() - 1,</span><br><span class="line">            d &#x3D; 2 * a() - 1;</span><br><span class="line">        t.push(&#123;</span><br><span class="line">            x: h,</span><br><span class="line">            y: g,</span><br><span class="line">            xa: q,</span><br><span class="line">            ya: d,</span><br><span class="line">            max: 6000</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        b()</span><br><span class="line">    &#125;, 100)</span><br><span class="line">&#125;();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;canvas id&#x3D;&quot;c_n7&quot; width&#x3D;&quot;1536&quot; height&#x3D;&quot;674&quot; style&#x3D;&quot;position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;&quot;&gt;&lt;&#x2F;canvas&gt;</span><br></pre></td></tr></table></figure>
+
+
+<script>
+!function() {
+    function o(w, v, i) {
+        return w.getAttribute(v) || i
+    }
+    function j(i) {
+        return document.getElementsByTagName(i)
+    }
+    function l() {
+        var i = j("script"),
+            w = i.length,
+            v = i[w - 1];
+        return {
+            l: w,
+            z: o(v, "zIndex", -1),
+            o: o(v, "opacity", 0.5),
+            c: o(v, "color", "0,0,0"),
+            n: o(v, "count", 99)
+        }
+    }
+    function k() {
+        r = u.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n = u.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function b() {
+        e.clearRect(0, 0, r, n);
+        var w = [f].concat(t);
+        var x, v, A, B, z, y;
+        t.forEach(function(i) {
+            i.x += i.xa, i.y += i.ya, i.xa *= i.x > r || i.x < 0 ? -1 : 1, i.ya *= i.y > n || i.y < 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+            for (v = 0; v < w.length; v++) {
+                x = w[v];
+                if (i !== x && null !== x.x && null !== x.y) {
+                    B = i.x - x.x, z = i.y - x.y, y = B * B + z * z;
+                    y < x.max && (x === f && y >= x.max / 2 && (i.x -= 0.03 * B, i.y -= 0.03 * z), A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())
+                }
+            }
+            w.splice(w.indexOf(i), 1)
+        }), m(b)
+    }
+    var u = document.createElement("canvas"),
+        s = l(),
+        c = "c_n" + s.l,
+        e = u.getContext("2d"),
+        r, n, m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(i) {
+        window.setTimeout(i, 1000 / 45)
+    }, a = Math.random, f = {
+        x: null,
+        y: null,
+        max: 20000
+    };
+    u.id = c;
+    u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
+    j("body")[0].appendChild(u);
+    k(), window.onresize = k;
+    window.onmousemove = function(i) {
+        i = i || window.event, f.x = i.clientX, f.y = i.clientY
+    }, window.onmouseout = function() {
+        f.x = null, f.y = null
+    };
+    for (var t = [], p = 0; s.n > p; p++) {
+        var h = a() * r,
+            g = a() * n,
+            q = 2 * a() - 1,
+            d = 2 * a() - 1;
+        t.push({
+            x: h,
+            y: g,
+            xa: q,
+            ya: d,
+            max: 6000
+        })
+    }
+    setTimeout(function() {
+        b()
+    }, 100)
+}();
+</script>
+<p><canvas id="c_n7" width="1536" height="674" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas></p>
+]]></content>
+      <categories>
+        <category>web</category>
+        <category>website</category>
+        <category>website background</category>
+        <category>dynamic</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>window.open传输json</title>
+    <url>/2020/12/08/website-js-json/</url>
+    <content><![CDATA[<div class="note "><p>下载文件时。利用表单将json传输后台</p>
+</div>
+<a id="more"></a>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function exportJson()&#123;</span><br><span class="line">	var rows &#x3D; $(_tt).datagrid(&#39;getSelections&#39;);</span><br><span class="line">	var url &#x3D; _path+&quot;&#x2F;path&#x2F;&quot;;</span><br><span class="line">	openWindowWithPost(url,rows);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function openWindowWithPost(url, data) &#123;</span><br><span class="line">	var form &#x3D; document.createElement(&quot;form&quot;);</span><br><span class="line">	form.target &#x3D; &quot;_blank&quot;;</span><br><span class="line">	form.method &#x3D; &quot;POST&quot;;</span><br><span class="line">	form.action &#x3D; url;</span><br><span class="line"></span><br><span class="line">	if (data) &#123;</span><br><span class="line">		for (var key in data) &#123;</span><br><span class="line">			var input &#x3D; document.createElement(&quot;textarea&quot;);</span><br><span class="line">			input.name &#x3D; key;</span><br><span class="line">			input.value &#x3D; typeof data[key] &#x3D;&#x3D;&#x3D; &quot;object&quot; ? JSON.stringify(data[key]).replaceAll(&#39;&quot;&#39;,&quot;&#39;&quot;) : data[key];</span><br><span class="line">			form.appendChild(input);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	form.style.display &#x3D; &quot;none&quot;;</span><br><span class="line">	form.enctype&#x3D;&#39;application&#x2F;json&#39;;</span><br><span class="line">	document.body.appendChild(form);</span><br><span class="line">	form.submit();</span><br><span class="line">	document.body.removeChild(form);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><div class="note danger"><p>部分特殊字符会被转义 </p>
+</div>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 导出权限规则（JSON）</span><br><span class="line"> * @param response</span><br><span class="line"> *&#x2F;</span><br><span class="line">@RequestMapping(value &#x3D; &quot;&#x2F;exportJson&quot;)</span><br><span class="line">@ResponseBody</span><br><span class="line">public void exportJson(HttpServletRequest request, HttpServletResponse response) &#123;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    StringBuilder sb &#x3D; new StringBuilder();</span><br><span class="line">    while (request.getParameter(String.valueOf(i)) !&#x3D; null) &#123;</span><br><span class="line">        if(!sb.toString().isEmpty())</span><br><span class="line">            sb.append(&quot;,&quot;);</span><br><span class="line">        sb.append(request.getParameter(String.valueOf(i)).replace(&quot;&lt;&quot;,&quot;&lt;&quot;).replace(&quot;&gt;&quot;,&quot;&gt;&quot;));</span><br><span class="line">        ++i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;响应到客户端</span><br><span class="line">    try &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            String fileName &#x3D; &quot;导出数据.json&quot;;</span><br><span class="line">            try &#123;</span><br><span class="line">                fileName &#x3D; new String(fileName.getBytes(), &quot;ISO8859-1&quot;);</span><br><span class="line">            &#125; catch (UnsupportedEncodingException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            response.setContentType(&quot;application&#x2F;octet-stream;charset&#x3D;UTF-8&quot;);</span><br><span class="line">            response.setHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename&#x3D;&quot; + fileName);</span><br><span class="line">            response.addHeader(&quot;Pargam&quot;, &quot;no-cache&quot;);</span><br><span class="line">            response.addHeader(&quot;Cache-Control&quot;, &quot;no-cache&quot;);</span><br><span class="line">        &#125; catch (Exception ex) &#123;</span><br><span class="line">            ex.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        PrintWriter w &#x3D; response.getWriter();</span><br><span class="line">        w.write(sb.toString());</span><br><span class="line">        w.flush();</span><br><span class="line">        w.close();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<!--more-->]]></content>
+      <categories>
+        <category>web</category>
+        <category>js</category>
+        <category>json</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+</search>
