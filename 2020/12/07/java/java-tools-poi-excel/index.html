@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="ExcelUtil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel导入导出工具类">
+<meta property="og:url" content="http://example.com/2020/12/07/java/java-tools-poi-excel/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="ExcelUtil">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T05:19:07.875Z">
+<meta property="article:author" content="GJOED">
+<meta property="article:tag" content="poi">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/12/07/java/java-tools-poi-excel/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Excel导入导出工具类 | Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Case</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">GJOED</p>
+  <div class="site-description" itemprop="description">to be</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/java/java-tools-poi-excel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GJOED">
+      <meta itemprop="description" content="to be">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Excel导入导出工具类
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-07T00:00:00+08:00">2020-12-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-08 13:19:07" itemprop="dateModified" datetime="2020-12-08T13:19:07+08:00">2020-12-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/tools/" itemprop="url" rel="index"><span itemprop="name">tools</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/tools/poi/" itemprop="url" rel="index"><span itemprop="name">poi</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/tools/poi/excel/" itemprop="url" rel="index"><span itemprop="name">excel</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note "><p>ExcelUtil </p>
+</div>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line">package com.pde.ams.p9.util;</span><br><span class="line"></span><br><span class="line">import com.pde.pdp.uupm.domain.UupmUserBean;</span><br><span class="line">import com.pde.pdp.uupm.domain.UupmUserRoleBean;</span><br><span class="line">import org.apache.poi.hssf.usermodel.*;</span><br><span class="line">import org.apache.poi.ss.usermodel.Cell;</span><br><span class="line">import org.apache.poi.ss.usermodel.Row;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public final class test &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * excel导出格式封装</span><br><span class="line">     * @param list</span><br><span class="line">     * @param type</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; HSSFWorkbook exportExcel(List&lt;T&gt; list ,String type) &#123;</span><br><span class="line">        HSSFWorkbook wb &#x3D; new HSSFWorkbook();</span><br><span class="line">        &#x2F;&#x2F;创建sheet页,名称</span><br><span class="line">        HSSFSheet sheet &#x3D; wb.createSheet(type);</span><br><span class="line">&#x2F;&#x2F;      sheet.setColumnWidth(1,3*1000); &#x2F;&#x2F;设置列宽</span><br><span class="line">        HSSFRow row;&#x2F;&#x2F;行</span><br><span class="line">        HSSFCell cell;&#x2F;&#x2F;单元格</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt;&#x3D; list.size(); i++) &#123;</span><br><span class="line">            row &#x3D; sheet.createRow(i);&#x2F;&#x2F;创建表格行</span><br><span class="line">            for (int j &#x3D; 0; j &lt;&#x3D; 6; j++) &#123;</span><br><span class="line">                initCell(list, type,row.createCell(j), i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return wb;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 列初始化</span><br><span class="line">     * @param cell</span><br><span class="line">     * @param list</span><br><span class="line">     * @param j</span><br><span class="line">     *&#x2F;</span><br><span class="line">    static &lt;T&gt; void initCell(List&lt;T&gt; list, String type, HSSFCell cell, int i, int j) &#123;</span><br><span class="line">        &#x2F;&#x2F;标题列</span><br><span class="line">        if (i &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            if (type.equals(&quot;user&quot;))</span><br><span class="line">                switch (j) &#123;</span><br><span class="line">                    case 0:</span><br><span class="line">                        cell.setCellValue(&quot;ID&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 1:</span><br><span class="line">                        cell.setCellValue(&quot;姓名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            else if (type.equals(&quot;roleUser&quot;))</span><br><span class="line">                switch (j) &#123;</span><br><span class="line">                    case 0:</span><br><span class="line">                        cell.setCellValue(&quot;ID&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 1:</span><br><span class="line">                        cell.setCellValue(&quot;姓名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                    case 2:</span><br><span class="line">                        cell.setCellValue(&quot;登录名&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        if (type.equals(&quot;user&quot;)) &#123;</span><br><span class="line">            UupmUserBean bean &#x3D; (UupmUserBean) list.get(i - 1);</span><br><span class="line"></span><br><span class="line">            switch (j) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    cell.setCellValue(bean.get_id());</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    cell.setCellValue(bean.getUser_name());</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (type.equals(&quot;roleUser&quot;)) &#123;</span><br><span class="line">            UupmUserBean bean &#x3D; (UupmUserBean) list.get(i - 1);</span><br><span class="line">            switch (j) &#123;</span><br><span class="line">                case 0:</span><br><span class="line">                    cell.setCellValue(bean.get_id());</span><br><span class="line">                    break;</span><br><span class="line">                case 1:</span><br><span class="line">                    cell.setCellValue(bean.getUser_name());</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    cell.setCellValue(bean.getLogon_name());</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * excel导入格式封装</span><br><span class="line">     * @param in</span><br><span class="line">     * @param type</span><br><span class="line">     * @param &lt;T&gt;</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static &lt;T&gt; List&lt;T&gt; importExcel(InputStream in, String type) &#123;</span><br><span class="line">        List&lt;T&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">        try &#123;</span><br><span class="line">            HSSFWorkbook workbook &#x3D; new HSSFWorkbook(in);</span><br><span class="line">            &#x2F;&#x2F;sheet页码</span><br><span class="line">            HSSFSheet hssfSheet &#x3D; workbook.getSheetAt(0);</span><br><span class="line">            </span><br><span class="line">            String v;</span><br><span class="line">            Map&lt;String,Long&gt; role &#x3D;new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            for (Row row : hssfSheet) &#123;</span><br><span class="line">                if (type.equals(&quot;user&quot;))&#123;</span><br><span class="line">                    UupmUserBean userBean &#x3D; new UupmUserBean();</span><br><span class="line">                    for (int i &#x3D; 0; i &lt;&#x3D; 6; i++) &#123;</span><br><span class="line">                        v &#x3D; getValue(row.getCell(i));</span><br><span class="line">                        switch (i) &#123;</span><br><span class="line">                            case 1:</span><br><span class="line">                                userBean.setUser_name(v);</span><br><span class="line">                                break;</span><br><span class="line">                            case 2:</span><br><span class="line">                                userBean.setLogon_name(v);</span><br><span class="line">                                break;</span><br><span class="line">                            case 3:</span><br><span class="line">                                userBean.setSex(v.equals(&quot;女&quot;)?2:1);</span><br><span class="line">                                break;</span><br><span class="line">                            case 6:</span><br><span class="line">                                userBean.setOrg_name(v);</span><br><span class="line">                                list.add((T) userBean);</span><br><span class="line">                                userBean &#x3D; new UupmUserBean();</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else if (type.equals(&quot;roleUser&quot;))&#123;</span><br><span class="line">                    UupmUserRoleBean userRoleBean &#x3D; new UupmUserRoleBean();</span><br><span class="line">                    for (int i &#x3D; 0; i &lt;&#x3D; 5; i++) &#123;</span><br><span class="line">                        v &#x3D; getValue(row.getCell(i));</span><br><span class="line">                        switch (i) &#123;</span><br><span class="line">                            case 0:</span><br><span class="line">                                userRoleBean.setUser_id(Long.parseLong(v));</span><br><span class="line">                                break;</span><br><span class="line">                            case 4:</span><br><span class="line">                                list.add((T) userRoleBean);</span><br><span class="line">                                userRoleBean &#x3D; new UupmUserRoleBean();</span><br><span class="line">                                break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 对表格中数值进行格式化</span><br><span class="line">     * @param cell</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    &#x2F;&#x2F;解决excel类型问题，获得数值</span><br><span class="line">    public static String getValue(Cell cell) &#123;</span><br><span class="line">        String value &#x3D; &quot;&quot;;</span><br><span class="line">        if (null &#x3D;&#x3D; cell) &#123;</span><br><span class="line">            return value;</span><br><span class="line">        &#125;</span><br><span class="line">        switch (cell.getCellType()) &#123;</span><br><span class="line">            &#x2F;&#x2F;数值型</span><br><span class="line">            case Cell.CELL_TYPE_NUMERIC:</span><br><span class="line">                if (HSSFDateUtil.isCellDateFormatted(cell)) &#123;</span><br><span class="line">                    &#x2F;&#x2F;如果是date类型则 ，获取该cell的date值</span><br><span class="line">                    Date date &#x3D; HSSFDateUtil.getJavaDate(cell.getNumericCellValue());</span><br><span class="line">                    SimpleDateFormat format &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);</span><br><span class="line">                    value &#x3D; format.format(date);</span><br><span class="line">                    ;</span><br><span class="line">                &#125; else &#123;&#x2F;&#x2F; 纯数字</span><br><span class="line">                    BigDecimal big &#x3D; new BigDecimal(cell.getNumericCellValue());</span><br><span class="line">                    value &#x3D; big.toString();</span><br><span class="line">                    &#x2F;&#x2F;解决1234.0  去掉后面的.0</span><br><span class="line">                    if (null !&#x3D; value &amp;&amp; !&quot;&quot;.equals(value.trim())) &#123;</span><br><span class="line">                        String[] item &#x3D; value.split(&quot;[.]&quot;);</span><br><span class="line">                        if (1 &lt; item.length &amp;&amp; &quot;0&quot;.equals(item[1])) &#123;</span><br><span class="line">                            value &#x3D; item[0];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F;字符串类型</span><br><span class="line">            case Cell.CELL_TYPE_STRING:</span><br><span class="line">                value &#x3D; cell.getStringCellValue().toString();</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F; 公式类型</span><br><span class="line">            case Cell.CELL_TYPE_FORMULA:</span><br><span class="line">                &#x2F;&#x2F;读公式计算值</span><br><span class="line">                value &#x3D; String.valueOf(cell.getNumericCellValue());</span><br><span class="line">                if (value.equals(&quot;NaN&quot;)) &#123;&#x2F;&#x2F; 如果获取的数据值为非法值,则转换为获取字符串</span><br><span class="line">                    value &#x3D; cell.getStringCellValue().toString();</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#x2F;&#x2F; 布尔类型</span><br><span class="line">            case Cell.CELL_TYPE_BOOLEAN:</span><br><span class="line">                value &#x3D; &quot; &quot; + cell.getBooleanCellValue();</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                value &#x3D; cell.getStringCellValue();</span><br><span class="line">        &#125;</span><br><span class="line">        if (&quot;null&quot;.endsWith(value.trim())) &#123;</span><br><span class="line">            value &#x3D; &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/poi/" rel="tag"># poi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/08/database/database-oracle-reduction/" rel="prev" title="dmp备份还原">
+                  <i class="fa fa-chevron-left"></i> dmp备份还原
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/07/pde-js-importTemplate/" rel="next" title="导入">
+                  导入 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GJOED</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="动态线条背景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="line">
+<meta property="og:url" content="http://example.com/2020/09/08/web/website-background-dynamic-line/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="动态线条背景">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-08T01:45:00.000Z">
+<meta property="article:modified_time" content="2020-09-08T07:14:43.625Z">
+<meta property="article:author" content="GJOED">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/09/08/web/website-background-dynamic-line/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>line | Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Code Case</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">GJOED</p>
+  <div class="site-description" itemprop="description">to be</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/08/web/website-background-dynamic-line/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GJOED">
+      <meta itemprop="description" content="to be">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          line
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-09-08 09:45:00 / 修改时间：15:14:43" itemprop="dateCreated datePublished" datetime="2020-09-08T09:45:00+08:00">2020-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/website/" itemprop="url" rel="index"><span itemprop="name">website</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/website/website-background/" itemprop="url" rel="index"><span itemprop="name">website background</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/website/website-background/dynamic/" itemprop="url" rel="index"><span itemprop="name">dynamic</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note "><p>动态线条背景 </p>
+</div>
+
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--js--&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">!function() &#123;</span><br><span class="line">    function o(w, v, i) &#123;</span><br><span class="line">        return w.getAttribute(v) || i</span><br><span class="line">    &#125;</span><br><span class="line">    function j(i) &#123;</span><br><span class="line">        return document.getElementsByTagName(i)</span><br><span class="line">    &#125;</span><br><span class="line">    function l() &#123;</span><br><span class="line">        var i &#x3D; j(&quot;script&quot;),</span><br><span class="line">            w &#x3D; i.length,</span><br><span class="line">            v &#x3D; i[w - 1];</span><br><span class="line">        return &#123;</span><br><span class="line">            l: w,</span><br><span class="line">            z: o(v, &quot;zIndex&quot;, -1),</span><br><span class="line">            o: o(v, &quot;opacity&quot;, 0.5),</span><br><span class="line">            c: o(v, &quot;color&quot;, &quot;0,0,0&quot;),</span><br><span class="line">            n: o(v, &quot;count&quot;, 99)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function k() &#123;</span><br><span class="line">        r &#x3D; u.width &#x3D; window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n &#x3D; u.height &#x3D; window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight</span><br><span class="line">    &#125;</span><br><span class="line">    function b() &#123;</span><br><span class="line">        e.clearRect(0, 0, r, n);</span><br><span class="line">        var w &#x3D; [f].concat(t);</span><br><span class="line">        var x, v, A, B, z, y;</span><br><span class="line">        t.forEach(function(i) &#123;</span><br><span class="line">            i.x +&#x3D; i.xa, i.y +&#x3D; i.ya, i.xa *&#x3D; i.x &gt; r || i.x &lt; 0 ? -1 : 1, i.ya *&#x3D; i.y &gt; n || i.y &lt; 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);</span><br><span class="line">            for (v &#x3D; 0; v &lt; w.length; v++) &#123;</span><br><span class="line">                x &#x3D; w[v];</span><br><span class="line">                if (i !&#x3D;&#x3D; x &amp;&amp; null !&#x3D;&#x3D; x.x &amp;&amp; null !&#x3D;&#x3D; x.y) &#123;</span><br><span class="line">                    B &#x3D; i.x - x.x, z &#x3D; i.y - x.y, y &#x3D; B * B + z * z;</span><br><span class="line">                    y &lt; x.max &amp;&amp; (x &#x3D;&#x3D;&#x3D; f &amp;&amp; y &gt;&#x3D; x.max &#x2F; 2 &amp;&amp; (i.x -&#x3D; 0.03 * B, i.y -&#x3D; 0.03 * z), A &#x3D; (x.max - y) &#x2F; x.max, e.beginPath(), e.lineWidth &#x3D; A &#x2F; 2, e.strokeStyle &#x3D; &quot;rgba(&quot; + s.c + &quot;,&quot; + (A + 0.2) + &quot;)&quot;, e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            w.splice(w.indexOf(i), 1)</span><br><span class="line">        &#125;), m(b)</span><br><span class="line">    &#125;</span><br><span class="line">    var u &#x3D; document.createElement(&quot;canvas&quot;),</span><br><span class="line">        s &#x3D; l(),</span><br><span class="line">        c &#x3D; &quot;c_n&quot; + s.l,</span><br><span class="line">        e &#x3D; u.getContext(&quot;2d&quot;),</span><br><span class="line">        r, n, m &#x3D; window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||</span><br><span class="line">    function(i) &#123;</span><br><span class="line">        window.setTimeout(i, 1000 &#x2F; 45)</span><br><span class="line">    &#125;, a &#x3D; Math.random, f &#x3D; &#123;</span><br><span class="line">        x: null,</span><br><span class="line">        y: null,</span><br><span class="line">        max: 20000</span><br><span class="line">    &#125;;</span><br><span class="line">    u.id &#x3D; c;</span><br><span class="line">    u.style.cssText &#x3D; &quot;position:fixed;top:0;left:0;z-index:&quot; + s.z + &quot;;opacity:&quot; + s.o;</span><br><span class="line">    j(&quot;body&quot;)[0].appendChild(u);</span><br><span class="line">    k(), window.onresize &#x3D; k;</span><br><span class="line">    window.onmousemove &#x3D; function(i) &#123;</span><br><span class="line">        i &#x3D; i || window.event, f.x &#x3D; i.clientX, f.y &#x3D; i.clientY</span><br><span class="line">    &#125;, window.onmouseout &#x3D; function() &#123;</span><br><span class="line">        f.x &#x3D; null, f.y &#x3D; null</span><br><span class="line">    &#125;;</span><br><span class="line">    for (var t &#x3D; [], p &#x3D; 0; s.n &gt; p; p++) &#123;</span><br><span class="line">        var h &#x3D; a() * r,</span><br><span class="line">            g &#x3D; a() * n,</span><br><span class="line">            q &#x3D; 2 * a() - 1,</span><br><span class="line">            d &#x3D; 2 * a() - 1;</span><br><span class="line">        t.push(&#123;</span><br><span class="line">            x: h,</span><br><span class="line">            y: g,</span><br><span class="line">            xa: q,</span><br><span class="line">            ya: d,</span><br><span class="line">            max: 6000</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        b()</span><br><span class="line">    &#125;, 100)</span><br><span class="line">&#125;();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;canvas id&#x3D;&quot;c_n7&quot; width&#x3D;&quot;1536&quot; height&#x3D;&quot;674&quot; style&#x3D;&quot;position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;&quot;&gt;&lt;&#x2F;canvas&gt;</span><br></pre></td></tr></table></figure>
+
+
+<script>
+!function() {
+    function o(w, v, i) {
+        return w.getAttribute(v) || i
+    }
+    function j(i) {
+        return document.getElementsByTagName(i)
+    }
+    function l() {
+        var i = j("script"),
+            w = i.length,
+            v = i[w - 1];
+        return {
+            l: w,
+            z: o(v, "zIndex", -1),
+            o: o(v, "opacity", 0.5),
+            c: o(v, "color", "0,0,0"),
+            n: o(v, "count", 99)
+        }
+    }
+    function k() {
+        r = u.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n = u.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function b() {
+        e.clearRect(0, 0, r, n);
+        var w = [f].concat(t);
+        var x, v, A, B, z, y;
+        t.forEach(function(i) {
+            i.x += i.xa, i.y += i.ya, i.xa *= i.x > r || i.x < 0 ? -1 : 1, i.ya *= i.y > n || i.y < 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+            for (v = 0; v < w.length; v++) {
+                x = w[v];
+                if (i !== x && null !== x.x && null !== x.y) {
+                    B = i.x - x.x, z = i.y - x.y, y = B * B + z * z;
+                    y < x.max && (x === f && y >= x.max / 2 && (i.x -= 0.03 * B, i.y -= 0.03 * z), A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())
+                }
+            }
+            w.splice(w.indexOf(i), 1)
+        }), m(b)
+    }
+    var u = document.createElement("canvas"),
+        s = l(),
+        c = "c_n" + s.l,
+        e = u.getContext("2d"),
+        r, n, m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(i) {
+        window.setTimeout(i, 1000 / 45)
+    }, a = Math.random, f = {
+        x: null,
+        y: null,
+        max: 20000
+    };
+    u.id = c;
+    u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
+    j("body")[0].appendChild(u);
+    k(), window.onresize = k;
+    window.onmousemove = function(i) {
+        i = i || window.event, f.x = i.clientX, f.y = i.clientY
+    }, window.onmouseout = function() {
+        f.x = null, f.y = null
+    };
+    for (var t = [], p = 0; s.n > p; p++) {
+        var h = a() * r,
+            g = a() * n,
+            q = 2 * a() - 1,
+            d = 2 * a() - 1;
+        t.push({
+            x: h,
+            y: g,
+            xa: q,
+            ya: d,
+            max: 6000
+        })
+    }
+    setTimeout(function() {
+        b()
+    }, 100)
+}();
+</script>
+<p><canvas id="c_n7" width="1536" height="674" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/03/blog-help/" rel="prev" title="Blog Help">
+                  <i class="fa fa-chevron-left"></i> Blog Help
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/08/web/website-background-dynamic-gril/" rel="next" title="character">
+                  character <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GJOED</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
